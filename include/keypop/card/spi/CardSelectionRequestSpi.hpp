@@ -1,11 +1,12 @@
-/**************************************************************************************************
- * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/                        *
- *                                                                                                *
- * This program and the accompanying materials are made available under the                       *
- * terms of the MIT License which is available at https://opensource.org/licenses/MIT.            *
- *                                                                                                *
- * SPDX-License-Identifier: MIT                                                                   *
- **************************************************************************************************/
+/******************************************************************************
+ * Copyright (c) 2025 Calypso Networks Association https://calypsonet.org/    *
+ *                                                                            *
+ * This program and the accompanying materials are made available under the   *
+ * terms of the MIT License which is available at                             *
+ * https://opensource.org/licenses/MIT.                                       *
+ *                                                                            *
+ * SPDX-License-Identifier: MIT                                               *
+ ******************************************************************************/
 
 #pragma once
 
@@ -13,6 +14,7 @@
 #include <ostream>
 #include <vector>
 
+#include "keyple/core/util/cpp/KeypleStd.hpp"
 #include "keypop/card/spi/CardRequestSpi.hpp"
 
 namespace keypop {
@@ -22,8 +24,8 @@ namespace spi {
 /**
  * Data provided as input to the selection process.
  *
- * <p>Embeds a card selector defining the target card profile and an optional card request to be
- * executed after the card selection when successful.
+ * <p>Embeds a card selector defining the target card profile and an optional
+ * card request to be executed after the card selection when successful.
  *
  * @see calypsonet::terminal::card::CardSelectionResponseApi
  * @since 1.0.0
@@ -34,6 +36,15 @@ public:
      * Virtual destructor.
      */
     virtual ~CardSelectionRequestSpi() = default;
+
+    /**
+     * Gets the list of successful selection status words.
+     *
+     * @return A set of integer values containing at least 9000h.
+     * @since 2.0.0
+     */
+    virtual const std::vector<int>& getSuccessfulSelectionStatusWords() const
+        = 0;
 
     /**
      * Gets the card request.
@@ -47,12 +58,11 @@ public:
      *
      */
     friend std::ostream&
-    operator<<(std::ostream& os, const std::shared_ptr<CardSelectionRequestSpi> csr) {
-        (void)csr;
-
+    operator<<(std::ostream& os, const CardSelectionRequestSpi& csr) {
         os << "CARD_SELECTION_REQUEST_SPI: {"
-           << "<TODO>"
-           << "}";
+           << "SUCCESSFUL_SELECTON_STATUS_WORDS: "
+           << csr.getSuccessfulSelectionStatusWords() << ", "
+           << "CARD_REQUEST: " << csr.getCardRequest() << "}";
 
         return os;
     }
@@ -62,7 +72,19 @@ public:
      */
     friend std::ostream&
     operator<<(
-        std::ostream& os, const std::vector<std::shared_ptr<CardSelectionRequestSpi>>& csrs) {
+        std::ostream& os, const std::shared_ptr<CardSelectionRequestSpi> csr) {
+        os << *csr.get();
+
+        return os;
+    }
+
+    /**
+     *
+     */
+    friend std::ostream&
+    operator<<(
+        std::ostream& os,
+        const std::vector<std::shared_ptr<CardSelectionRequestSpi>>& csrs) {
         os << "CARD_SELECTION_REQUEST_SPIS: {";
 
         for (auto it = std::begin(csrs); it != std::end(csrs); ++it) {

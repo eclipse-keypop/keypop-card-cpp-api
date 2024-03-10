@@ -1,17 +1,21 @@
-/**************************************************************************************************
- * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/                        *
- *                                                                                                *
- * This program and the accompanying materials are made available under the                       *
- * terms of the MIT License which is available at https://opensource.org/licenses/MIT.            *
- *                                                                                                *
- * SPDX-License-Identifier: MIT                                                                   *
- **************************************************************************************************/
+/******************************************************************************
+ * Copyright (c) 2025 Calypso Networks Association https://calypsonet.org/    *
+ *                                                                            *
+ * This program and the accompanying materials are made available under the   *
+ * terms of the MIT License which is available at                             *
+ * https://opensource.org/licenses/MIT.                                       *
+ *                                                                            *
+ * SPDX-License-Identifier: MIT                                               *
+ ******************************************************************************/
 
 #pragma once
 
 #include <cstdint>
+#include <iomanip>
 #include <memory>
 #include <ostream>
+#include <sstream>
+#include <string>
 #include <vector>
 
 namespace keypop {
@@ -36,7 +40,8 @@ public:
     virtual const std::vector<uint8_t>& getApdu() const = 0;
 
     /**
-     * Gets the data part of the response received from the card (excluding the status word).
+     * Gets the data part of the response received from the card (excluding the
+     * status word).
      *
      * @return A not null byte array.
      * @since 1.0.0
@@ -55,11 +60,26 @@ public:
      *
      */
     friend std::ostream&
-    operator<<(std::ostream& os, const std::shared_ptr<ApduResponseApi> ara) {
+    operator<<(std::ostream& os, const ApduResponseApi& ara) {
+        const std::vector<uint8_t> apdu = ara.getApdu();
+        const std::vector<uint8_t> dataOut = ara.getDataOut();
+
+        std::stringstream ssApdu;
+        for (const auto val : apdu) {
+            ssApdu << std::uppercase << std::hex << std::setfill('0')
+                   << std::setw(2) << static_cast<int>(val);
+        }
+
+        std::stringstream ssDataOut;
+        for (const auto val : dataOut) {
+            ssDataOut << std::uppercase << std::hex << std::setfill('0')
+                      << std::setw(2) << static_cast<int>(val);
+        }
+
         os << "APDU_RESPONSE_API: {"
-           << "APDU = " << ara->getApdu() << ", "
-           << "DATA_OUT = " << ara->getDataOut() << ", "
-           << "STATUS_WORD = " << ara->getStatusWord() << "}";
+           << "APDU: " << ssApdu.str() << ", "
+           << "DATA_OUT: " << ssDataOut.str() << ", "
+           << "STATUS_WORD: " << ara.getStatusWord() << "}";
 
         return os;
     }
@@ -68,13 +88,28 @@ public:
      *
      */
     friend std::ostream&
-    operator<<(std::ostream& os, const std::vector<std::shared_ptr<ApduResponseApi>>& aras) {
+    operator<<(std::ostream& os, const std::shared_ptr<ApduResponseApi> ara) {
+        os << *ara.get();
+
+        return os;
+    }
+
+    /**
+     *
+     */
+    friend std::ostream&
+    operator<<(
+        std::ostream& os,
+        const std::vector<std::shared_ptr<ApduResponseApi>>& aras) {
         os << "APDU_RESPONSE_APIS: {";
-        for (auto it = aras.begin(); it != aras.end(); ++it) {
-            if (it != aras.begin())
-                os << ", ";
+
+        for (auto it = std::begin(aras); it != std::end(aras); ++it) {
             os << *it;
+            if (it != aras.end() - 1) {
+                os << ", ";
+            }
         }
+
         os << "}";
 
         return os;

@@ -1,11 +1,12 @@
-/**************************************************************************************************
- * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/                        *
- *                                                                                                *
- * This program and the accompanying materials are made available under the                       *
- * terms of the MIT License which is available at https://opensource.org/licenses/MIT.            *
- *                                                                                                *
- * SPDX-License-Identifier: MIT                                                                   *
- **************************************************************************************************/
+/******************************************************************************
+ * Copyright (c) 2025 Calypso Networks Association https://calypsonet.org/    *
+ *                                                                            *
+ * This program and the accompanying materials are made available under the   *
+ * terms of the MIT License which is available at                             *
+ * https://opensource.org/licenses/MIT.                                       *
+ *                                                                            *
+ * SPDX-License-Identifier: MIT                                               *
+ ******************************************************************************/
 
 #pragma once
 
@@ -20,8 +21,8 @@ namespace keypop {
 namespace card {
 
 /**
- * Exception carrying response data received from the card until an unexpected APDU status word is
- * received.
+ * Exception carrying response data received from the card until an unexpected
+ * APDU status word is received.
  *
  * @since 1.0.0
  */
@@ -31,8 +32,9 @@ public:
      * Builds a new exception embedding card response data.
      *
      * @param cardResponseApi The card responses received so far.
-     * @param isCardResponseComplete True if the number responses equals the number of requests
-     *        present in the original calypsonet::terminal::card::spi::CardRequestSpi.
+     * @param isCardResponseComplete True if the number responses equals the
+     * number of requests present in the original
+     * calypsonet::terminal::card::spi::CardRequestSpi.
      * @param message Message to identify the exception context.
      * @since 1.0.0
      */
@@ -44,11 +46,13 @@ public:
     }
 
     /**
-     * Builds a new exception embedding card response data with the originating exception.
+     * Builds a new exception embedding card response data with the originating
+     * exception.
      *
      * @param cardResponseApi The card responses received so far.
-     * @param isCardResponseComplete True if the number responses equals the number of requests
-     *        present in the original calypsonet::terminal::card::spi::CardRequestSpi.
+     * @param isCardResponseComplete True if the number responses equals the
+     * number of requests present in the original
+     * calypsonet::terminal::card::spi::CardRequestSpi.
      * @param message Message to identify the exception context.
      * @param cause The cause
      * @since 1.0.0
@@ -58,7 +62,8 @@ public:
         const bool isCardResponseComplete,
         const std::string& message,
         const std::shared_ptr<exception> cause)
-    : AbstractApduException(cardResponseApi, isCardResponseComplete, message, cause) {
+    : AbstractApduException(
+        cardResponseApi, isCardResponseComplete, message, cause) {
     }
 };
 

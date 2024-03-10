@@ -1,17 +1,20 @@
-/**************************************************************************************************
- * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/                        *
- *                                                                                                *
- * This program and the accompanying materials are made available under the                       *
- * terms of the MIT License which is available at https://opensource.org/licenses/MIT.            *
- *                                                                                                *
- * SPDX-License-Identifier: MIT                                                                   *
- **************************************************************************************************/
+/******************************************************************************
+ * Copyright (c) 2025 Calypso Networks Association https://calypsonet.org/    *
+ *                                                                            *
+ * This program and the accompanying materials are made available under the   *
+ * terms of the MIT License which is available at                             *
+ * https://opensource.org/licenses/MIT.                                       *
+ *                                                                            *
+ * SPDX-License-Identifier: MIT                                               *
+ ******************************************************************************/
 
 #pragma once
 
 #include <cstdint>
+#include <iomanip>
 #include <memory>
 #include <ostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -38,10 +41,11 @@ public:
      * @return A array of at least 4 bytes.
      * @since 1.0.0
      */
-    virtual std::vector<uint8_t>& getApdu() = 0;
+    virtual std::vector<uint8_t> getApdu() const = 0;
 
     /**
-     * Gets the list of status words that must be considered successful for the APDU.
+     * Gets the list of status words that must be considered successful for the
+     * APDU.
      *
      * @return A set of integer values containing at least 9000h.
      * @since 1.0.0
@@ -62,10 +66,28 @@ public:
      *
      */
     friend std::ostream&
-    operator<<(std::ostream& os, ApduRequestSpi& ars) {
+    operator<<(std::ostream& os, const ApduRequestSpi& ars) {
+        const std::vector<uint8_t> apdu = ars.getApdu();
+        const std::vector<int> sw = ars.getSuccessfulStatusWords();
+
+        std::stringstream ssApdu;
+        for (const auto val : apdu) {
+            ssApdu << std::uppercase << std::hex << std::setfill('0')
+                   << std::setw(2) << static_cast<int>(val);
+        }
+
+        std::stringstream ssSw;
+        for (auto it = std::begin(sw); it != std::end(sw); ++it) {
+            ssSw << std::uppercase << std::hex << std::setfill('0')
+                 << std::setw(4) << static_cast<int>(*it);
+            if (it != sw.end() - 1) {
+                ssSw << ", ";
+            }
+        }
+
         os << "APDU_REQUEST_SPI: {"
-           << "APDU: " << ars.getApdu() << ", "
-           << "SUCCESSFUL_STATUS_WORDS: " << ars.getSuccessfulStatusWords() << ", "
+           << "APDU: " << ssApdu.str() << ", "
+           << "SUCCESSFUL_STATUS_WORD: " << ssSw.str() << ", "
            << "INFO: " << ars.getInfo() << "}";
 
         return os;
@@ -76,11 +98,7 @@ public:
      */
     friend std::ostream&
     operator<<(std::ostream& os, const std::shared_ptr<ApduRequestSpi> ars) {
-        if (ars == nullptr) {
-            os << "APDU_REQUEST_SPI: null";
-        } else {
-            os << *ars.get();
-        }
+        os << *ars.get();
 
         return os;
     }
@@ -89,14 +107,16 @@ public:
      *
      */
     friend std::ostream&
-    operator<<(std::ostream& os, const std::vector<std::shared_ptr<ApduRequestSpi>>& ars) {
+    operator<<(
+        std::ostream& os,
+        const std::vector<std::shared_ptr<ApduRequestSpi>>& arss) {
         os << "APDU_REQUEST_SPIS: {";
 
-        for (auto it = ars.begin(); it != ars.end(); it++) {
-            if (it != ars.begin()) {
+        for (auto it = std::begin(arss); it != std::end(arss); ++it) {
+            os << *it;
+            if (it != arss.end() - 1) {
                 os << ", ";
             }
-            os << *it;
         }
 
         os << "}";

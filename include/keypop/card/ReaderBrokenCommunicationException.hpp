@@ -14,18 +14,19 @@
 #include <stdexcept>
 #include <string>
 
+#include "keypop/card/AbstractApduException.hpp"
 #include "keypop/card/CardResponseApi.hpp"
 
 namespace keypop {
 namespace card {
 
 /**
- * Generic exception carrying response data received from the card until a
- * communication failure occurs or an unexpected APDU status code is received.
+ * Exception carrying response data received from the card until a communication
+ * failure with the reader occurs.
  *
  * @since 1.0.0
  */
-class AbstractApduException : public std::exception {
+class ReaderBrokenCommunicationException final : public AbstractApduException {
 public:
     /**
      * Builds a new exception embedding card response data.
@@ -34,17 +35,14 @@ public:
      * @param isCardResponseComplete True if the number responses equals the
      * number of requests present in the original
      * calypsonet::terminal::card::spi::CardRequestSpi.
-     * @param message The message to identify the exception context.
+     * @param message Message to identify the exception context.
      * @since 1.0.0
      */
-    AbstractApduException(
+    ReaderBrokenCommunicationException(
         const std::shared_ptr<CardResponseApi> cardResponseApi,
         const bool isCardResponseComplete,
         const std::string& message)
-    : std::exception()
-    , mMessage(message)
-    , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete) {
+    : AbstractApduException(cardResponseApi, isCardResponseComplete, message) {
     }
 
     /**
@@ -59,63 +57,14 @@ public:
      * @param cause The cause
      * @since 1.0.0
      */
-    AbstractApduException(
+    ReaderBrokenCommunicationException(
         const std::shared_ptr<CardResponseApi> cardResponseApi,
         const bool isCardResponseComplete,
         const std::string& message,
-        const std::shared_ptr<std::exception> cause)
-    : std::exception(*cause)
-    , mMessage(message)
-    , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete) {
+        const std::shared_ptr<exception> cause)
+    : AbstractApduException(
+        cardResponseApi, isCardResponseComplete, message, cause) {
     }
-
-    /**
-     * Gets the response data received so far.
-     *
-     * @return A not null reference.
-     * @since 1.0.0
-     */
-    const std::shared_ptr<CardResponseApi>
-    getCardResponse() const {
-        return mCardResponseApi;
-    }
-
-    /**
-     * Indicates if all the responses expected from the corresponding
-     * calypsonet::terminal::card::spi::CardRequestSpi have been received.
-     *
-     * @return True if all expected responses have been received.
-     * @since 1.0.0
-     */
-    bool
-    isCardResponseComplete() const {
-        return mIsCardResponseComplete;
-    }
-
-    /**
-     *
-     */
-    const std::string&
-    getMessage() const {
-        return mMessage;
-    }
-
-private:
-    /**
-     *
-     */
-    const std::string mMessage;
-
-    /**
-     *
-     */
-    const std::shared_ptr<CardResponseApi> mCardResponseApi;
-
-    /**
-     *
-     */
-    const bool mIsCardResponseComplete = false;
 };
 
 } /* namespace card */
