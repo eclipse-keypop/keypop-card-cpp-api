@@ -21,7 +21,7 @@ and validation.
 - **Modular Interfaces**: Designed to support modular extensions, allowing developers to implement custom functionality
   while adhering to the standardized interface structure defined by this project.
 - **Compliance**: Aligned with the specifications of the Calypso Networks Association, ensuring that implementations
-  conform to recognized standards, which is crucial for terminal reader system certification.
+  conform to recognized standards, which is crucial for the terminal reader layer certification.
 
 ## Usage
 To use the interface definitions in your project, include the relevant headers in your source files and provide concrete
