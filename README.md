@@ -3,7 +3,7 @@
 This repository contains C++ source files that define component interfaces aligned with the 
 [**Terminal Card**](https://terminal-api.calypsonet.org/specifications/reader-layer/card-api/)
 specifications proposed by the [Calypso Networks Association](https://www.calypsonet.org/). This C++
-interface is a port of the [Keypop Card Java API](https://github.com/eclipse/keypop-card-java-api), which remains
+interface is a port of the [Keypop Card Java API](https://github.com/eclipse-keypop/keypop-card-java-api), which remains
 the primary reference implementation. The C++ version aims to closely follow and maintain compatibility with the Java
 version, ensuring consistent functionality and adherence to the established specifications.
 
