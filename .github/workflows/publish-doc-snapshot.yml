@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Generate and prepare documentation
-        uses: eclipse-keypop/keypop-action-docs/doxygen@v1
+        uses: eclipse-keypop/keypop-actions/doxygen@v1
         with:
           repo-name: ${{ github.event.repository.name }}
 
