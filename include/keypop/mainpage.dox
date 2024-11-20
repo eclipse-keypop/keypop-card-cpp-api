@@ -1,0 +1,67 @@
+/**
+ * @mainpage Keypop Card C++ API Documentation
+ *
+ * @section overview Overview
+ *
+ * The Keypop Card C++ API defines interfaces for card communication aligned with the
+ * <a href="https://terminal-api.calypsonet.org/specifications/reader-layer/card-api/">Terminal Card specifications</a>
+ * from the Calypso Networks Association. This C++ interface provides a port of the
+ * reference <a href="https://github.com/eclipse-keypop/keypop-card-java-api">Keypop Card Java API</a>.
+ *
+ * @section architecture Architecture & Components
+ *
+ * @subsection apdu_communication APDU Communication
+ *
+ * - keypop::card::spi::ApduRequestSpi
+ *   Interface for constructing and formatting APDU commands
+ *
+ * - keypop::card::ApduResponseApi
+ *   Interface for handling and processing APDU responses
+ *
+ * - keypop::card::spi::CardRequestSpi
+ *   Manager for grouping multiple APDU commands
+ *
+ * - keypop::card::CardResponseApi
+ *   Container for responses from multiple APDU executions
+ *
+ * @subsection card_selection Card Selection Process
+ *
+ * - keypop::card::spi::CardSelectionRequestSpi
+ *   Input data and parameters for card selection operations
+ *
+ * - keypop::card::CardSelectionResponseApi
+ *   Card initialization and selection data handler
+ *
+ * - keypop::card::spi::CardSelectionExtensionSpi
+ *   Extension mechanisms for specific card protocols
+ *
+ * - keypop::card::spi::SmartCardSpi
+ *   Foundation interface for card implementations
+ *
+ * @subsection channel_management Communication Channel Management
+ *
+ * - keypop::card::ProxyReaderApi
+ *   Request transmission and channel control handler
+ *
+ * - keypop::card::ChannelControl
+ *   Channel management policies (KEEP_OPEN, CLOSE_AFTER)
+ *
+ * @section exceptions Exception Handling
+ *
+ * The API implements the following exception hierarchy:
+ *
+ * - keypop::card::AbstractApduException
+ *   Base class for APDU-related exceptions
+ *
+ * - keypop::card::CardBrokenCommunicationException
+ *   Card communication failure handling
+ *
+ * - keypop::card::ReaderBrokenCommunicationException
+ *   Reader communication failure handling
+ *
+ * - keypop::card::UnexpectedStatusWordException
+ *   Unexpected APDU status response handling
+ *
+ * - keypop::card::ParseException
+ *   Card selection response parsing failure handling
+ */
