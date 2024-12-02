@@ -8,7 +8,8 @@
 # *************************************************************************************************/
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
-PROJECT(KeypopCardCppApi C CXX)
+PROJECT(KeypopCardCppApi
+        LANGAUGES C CXX)
 
 SET(CMAKE_PROJECT_VERSION_MAJOR "2")
 SET(CMAKE_PROJECT_VERSION_MINOR "0")
