@@ -11,9 +11,9 @@
 
 #include <memory>
 
-#include "keypop/card/CardRequestSpi.hpp"
 #include "keypop/card/CardResponseApi.hpp"
 #include "keypop/card/ChannelControl.hpp"
+#include "keypop/card/spi/CardRequestSpi.hpp"
 
 namespace keypop {
 namespace card {

@@ -13,7 +13,7 @@ INCLUDE(FetchContent)
 
 IF(NOT EXISTS "${CMAKE_BINARY_DIR}/_deps/googletest-src")
 
-    MESSAGE("fetching GTest from keyple common")
+    MESSAGE("-- > Fetching GTest from keyple common")
 
     FetchContent_Declare(
 
