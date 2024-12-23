@@ -18,6 +18,8 @@
 namespace keypop {
 namespace card {
 
+using keypop::card::spi::CardRequestSpi;
+
 /**
  * Reader able to transmit card requests and having control over the physical channel.
  *
@@ -48,9 +50,8 @@ public:
      * <p><b>Note:</b> in case of an error when sending an APDU (communication error, unexpected
      * status word), an keypop::card::AbstractApduException exception is thrown. Any responses from
      * previously transmitted APDU commands are attached to this exception.<br>
-       This allows the calling application to be tolerant to card tearing and to retrieve the
-     partial
-     * response to the keypop::card::CardRequestSpi or to have strict control over the
+     * This allows the calling application to be tolerant to card tearing and to retrieve the
+     * partial response to the keypop::card::CardRequestSpi or to have strict control over the
      * APDUs sent to the card (see keypop::card::CardRequestSpi::stopOnUnsuccessfulStatusWord()).
      *
      * @param cardRequest The card request.

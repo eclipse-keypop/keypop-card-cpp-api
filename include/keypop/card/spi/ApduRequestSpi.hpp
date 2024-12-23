@@ -61,6 +61,19 @@ public:
     /**
      *
      */
+    inline friend std::ostream&
+    operator<<(std::ostream& os, const std::vector<uint8_t>& v) {
+        for (int i = 0; i < static_cast<int>(v.size()); i++) {
+            os << std::uppercase << std::hex << std::setfill('0') << std::setw(2)
+               << static_cast<int>(v[i]);
+        }
+
+        return os;
+    }
+
+    /**
+     *
+     */
     friend std::ostream&
     operator<<(std::ostream& os, ApduRequestSpi& ars) {
         os << "APDU_REQUEST_SPI: {"
