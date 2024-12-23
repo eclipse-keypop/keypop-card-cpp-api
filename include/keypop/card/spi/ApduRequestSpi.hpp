@@ -16,37 +16,7 @@
 #include <string>
 #include <vector>
 
-namespace std {
-
-/**
- *
- */
-inline std::ostream&
-operator<<(std::ostream& os, const std::vector<uint8_t>& v) {
-    for (int i = 0; i < static_cast<int>(v.size()); i++) {
-        os << std::uppercase << std::hex << std::setfill('0') << std::setw(2)
-           << static_cast<int>(v[i]);
-    }
-
-    return os;
-}
-
-/**
- *
- */
-inline std::ostream&
-operator<<(std::ostream& os, const std::vector<int>& v) {
-    for (int i = 0; i < static_cast<int>(v.size()); i++) {
-        if (i != 0) {
-            os << ", ";
-        }
-
-        os << std::hex << std::setfill('0') << std::setw(8) << static_cast<int>(v[i]);
-    }
-
-    return os;
-}
-} /* namespace std */
+#include "keypop/card/cpp/KeypopStd.hpp"
 
 namespace keypop {
 namespace card {

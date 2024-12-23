@@ -14,6 +14,8 @@
 #include <ostream>
 #include <vector>
 
+#include "keypop/card/cpp/KeypopStd.hpp"
+
 namespace keypop {
 namespace card {
 
