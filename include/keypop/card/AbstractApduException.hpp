@@ -41,7 +41,9 @@ public:
         const std::string& message)
     : std::exception()
     , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete) {(void)message: }
+    , mIsCardResponseComplete(isCardResponseComplete) {
+        (void)message;
+    }
 
     /**
      * Builds a new exception embedding card response data with the originating exception.
