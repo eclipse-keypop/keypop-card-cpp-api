@@ -39,10 +39,9 @@ public:
         const std::shared_ptr<CardResponseApi> cardResponseApi,
         const bool isCardResponseComplete,
         const std::string& message)
-    : std::exception(message)
+    : std::exception()
     , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete) {
-    }
+    , mIsCardResponseComplete(isCardResponseComplete) {(void)message: }
 
     /**
      * Builds a new exception embedding card response data with the originating exception.
@@ -59,9 +58,10 @@ public:
         const bool isCardResponseComplete,
         const std::string& message,
         const std::shared_ptr<std::exception> cause)
-    : std::exception(message, cause)
+    : std::exception(*cause)
     , mCardResponseApi(cardResponseApi)
     , mIsCardResponseComplete(isCardResponseComplete) {
+        (void)message;
     }
 
     /**
