@@ -71,7 +71,7 @@ public:
      * @since 1.0.0
      */
     const std::shared_ptr<CardResponseApi>
-    getCardResponse() {
+    getCardResponse() const {
         return mCardResponseApi;
     }
 
