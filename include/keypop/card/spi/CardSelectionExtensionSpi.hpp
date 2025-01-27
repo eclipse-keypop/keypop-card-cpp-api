@@ -12,6 +12,7 @@
 #include <memory>
 
 #include "keypop/card/spi/CardSelectionRequestSpi.hpp"
+#include "keypop/card/spi/SmartCardSpi.hpp"
 
 namespace keypop {
 namespace card {
