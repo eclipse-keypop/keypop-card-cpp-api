@@ -41,7 +41,7 @@ public:
      * @return A set of integer values containing at least 9000h.
      * @since 2.0.0
      */
-    virtual const std::vector<int>& getSuccessfulSelectionStatusWords() const;
+    virtual const std::vector<int>& getSuccessfulSelectionStatusWords() const = 0;
 
     /**
      * Gets the card request.
