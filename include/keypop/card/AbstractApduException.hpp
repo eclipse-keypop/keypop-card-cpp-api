@@ -40,8 +40,8 @@ public:
         const bool isCardResponseComplete,
         const std::string& message)
     : std::exception()
-    , mCardResponseApi(cardResponseApi)
     , mMessage(message)
+    , mCardResponseApi(cardResponseApi)
     , mIsCardResponseComplete(isCardResponseComplete) {
     }
 
@@ -61,8 +61,8 @@ public:
         const std::string& message,
         const std::shared_ptr<std::exception> cause)
     : std::exception(*cause)
-    , mCardResponseApi(cardResponseApi)
     , mMessage(message)
+    , mCardResponseApi(cardResponseApi)
     , mIsCardResponseComplete(isCardResponseComplete) {
     }
 
