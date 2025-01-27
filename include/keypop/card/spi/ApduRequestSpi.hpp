@@ -41,7 +41,7 @@ public:
      * @return A array of at least 4 bytes.
      * @since 1.0.0
      */
-    virtual const std::vector<uint8_t>& getApdu() const = 0;
+    virtual std::vector<uint8_t> getApdu() const = 0;
 
     /**
      * Gets the list of status words that must be considered successful for the APDU.
