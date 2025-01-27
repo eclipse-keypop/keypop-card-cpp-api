@@ -41,8 +41,8 @@ public:
         const std::string& message)
     : std::exception()
     , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete) {
-        (void)message;
+    , mIsCardResponseComplete(isCardResponseComplete)
+    , mMessage(message) {
     }
 
     /**
@@ -62,8 +62,8 @@ public:
         const std::shared_ptr<std::exception> cause)
     : std::exception(*cause)
     , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete) {
-        (void)message;
+    , mIsCardResponseComplete(isCardResponseComplete)
+    , mMessage(message) {
     }
 
     /**
@@ -89,7 +89,20 @@ public:
         return mIsCardResponseComplete;
     }
 
+    /**
+     *
+     */
+    const std::string&
+    getMessage() const {
+        return mMessage;
+    }
+
 private:
+    /**
+     *
+     */
+    const std::string mMessage;
+
     /**
      *
      */
