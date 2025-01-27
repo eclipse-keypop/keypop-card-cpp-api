@@ -36,6 +36,14 @@ public:
     virtual ~CardSelectionRequestSpi() = default;
 
     /**
+     * Gets the list of successful selection status words.
+     *
+     * @return A set of integer values containing at least 9000h.
+     * @since 2.0.0
+     */
+    virtual const std::vector<int>& getSuccessfulSelectionStatusWords() const;
+
+    /**
      * Gets the card request.
      *
      * @return Null if no card request has been defined.
