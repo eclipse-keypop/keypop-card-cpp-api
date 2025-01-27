@@ -31,8 +31,8 @@ public:
      * @since 1.0.0
      */
     explicit ParseException(const std::string& message)
-    : std::exception() {
-        (void)message;
+    : std::exception()
+    , mMessage(message) {
     }
 
     /**
@@ -41,9 +41,23 @@ public:
      * @since 1.0.0
      */
     ParseException(const std::string& message, const std::shared_ptr<std::exception> cause)
-    : std::exception(*cause) {
-        (void)message;
+    : std::exception(*cause)
+    , mMessage(message) {
     }
+
+    /**
+     *
+     */
+    const std::string&
+    getMessage() const {
+        return mMessage;
+    }
+
+private:
+    /**
+     *
+     */
+    const std::string mMessage;
 };
 
 } /* namespace card */
