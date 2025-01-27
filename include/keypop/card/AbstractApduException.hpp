@@ -41,8 +41,8 @@ public:
         const std::string& message)
     : std::exception()
     , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete)
-    , mMessage(message) {
+    , mMessage(message)
+    , mIsCardResponseComplete(isCardResponseComplete) {
     }
 
     /**
