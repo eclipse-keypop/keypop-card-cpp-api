@@ -62,8 +62,8 @@ public:
         const std::shared_ptr<std::exception> cause)
     : std::exception(*cause)
     , mCardResponseApi(cardResponseApi)
-    , mIsCardResponseComplete(isCardResponseComplete)
-    , mMessage(message) {
+    , mMessage(message)
+    , mIsCardResponseComplete(isCardResponseComplete) {
     }
 
     /**
