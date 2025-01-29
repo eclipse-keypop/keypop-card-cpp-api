@@ -27,7 +27,7 @@ namespace card {
  * <p>Includes the status of the selection itself and the responses to any commands that may have
  * been executed afterwards.
  *
- * @see org::calypsonet.terminal.card.spi.CardSelectionRequestSpi
+ * @see CardSelectionRequestSpi
  * @since 1.0.0
  */
 class CardSelectionResponseApi {
