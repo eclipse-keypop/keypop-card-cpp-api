@@ -14,7 +14,6 @@
 #include <string>
 #include <vector>
 
-/* Calypsonet Terminal Card */
 #include "keypop/card/ApduResponseApi.hpp"
 #include "keypop/card/CardResponseApi.hpp"
 
