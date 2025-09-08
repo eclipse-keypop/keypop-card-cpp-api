@@ -1,11 +1,12 @@
-/**************************************************************************************************
- * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/                        *
- *                                                                                                *
- * This program and the accompanying materials are made available under the                       *
- * terms of the MIT License which is available at https://opensource.org/licenses/MIT.            *
- *                                                                                                *
- * SPDX-License-Identifier: MIT                                                                   *
- **************************************************************************************************/
+/******************************************************************************
+ * Copyright (c) 2025 Calypso Networks Association https://calypsonet.org/    *
+ *                                                                            *
+ * This program and the accompanying materials are made available under the   *
+ * terms of the MIT License which is available at                             *
+ * https://opensource.org/licenses/MIT.                                       *
+ *                                                                            *
+ * SPDX-License-Identifier: MIT                                               *
+ ******************************************************************************/
 
 #pragma once
 
@@ -19,8 +20,8 @@ namespace card {
 /**
  * Indicates that the parsing of the card selection response has failed.
  *
- * <p>The most likely reason is that the select application command returned an invalid FCI
- * structure.
+ * <p>The most likely reason is that the select application command returned an
+ * invalid FCI structure.
  *
  * @since 2.0.0
  */
@@ -31,8 +32,8 @@ public:
      * @since 1.0.0
      */
     explicit ParseException(const std::string& message)
-    : std::exception() {
-        (void)message;
+    : std::exception()
+    , mMessage(message) {
     }
 
     /**
@@ -40,10 +41,25 @@ public:
      * @param cause The cause.
      * @since 1.0.0
      */
-    ParseException(const std::string& message, const std::shared_ptr<std::exception> cause)
-    : std::exception(*cause) {
-        (void)message;
+    ParseException(
+        const std::string& message, const std::shared_ptr<std::exception> cause)
+    : std::exception(*cause)
+    , mMessage(message) {
     }
+
+    /**
+     *
+     */
+    const std::string&
+    getMessage() const {
+        return mMessage;
+    }
+
+private:
+    /**
+     *
+     */
+    const std::string mMessage;
 };
 
 } /* namespace card */
