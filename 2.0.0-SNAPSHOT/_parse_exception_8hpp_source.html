@@ -71,43 +71,54 @@ $(function() {
   <div class="headertitle"><div class="title">ParseException.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_parse_exception_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**************************************************************************************************</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (c) 2024 Calypso Networks Association https://calypsonet.org/                        *</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                                                *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * This program and the accompanying materials are made available under the                       *</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * terms of the MIT License which is available at https://opensource.org/licenses/MIT.            *</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *                                                                                                *</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * SPDX-License-Identifier: MIT                                                                   *</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> **************************************************************************************************/</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekeypop.html">keypop</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>card {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="classkeypop_1_1card_1_1_parse_exception.html">ParseException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html#ab0190a0e94ed97dfa70e69a7cdd6a92a">   33</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classkeypop_1_1card_1_1_parse_exception.html#ab0190a0e94ed97dfa70e69a7cdd6a92a">ParseException</a>(<span class="keyword">const</span> std::string&amp; message)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    : std::exception() {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        (void)message;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html#a0ac0c0e29e964a51938d98db238c6226">   43</a></span>    <a class="code hl_function" href="classkeypop_1_1card_1_1_parse_exception.html#a0ac0c0e29e964a51938d98db238c6226">ParseException</a>(<span class="keyword">const</span> std::string&amp; message, <span class="keyword">const</span> std::shared_ptr&lt;std::exception&gt; cause)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    : std::exception(*cause) {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        (void)message;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <span class="comment">/* namespace card */</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>} <span class="comment">/* namespace keypop */</span></div>
-<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html">keypop::card::ParseException</a></div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00027">ParseException.hpp:27</a></div></div>
-<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html_a0ac0c0e29e964a51938d98db238c6226"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html#a0ac0c0e29e964a51938d98db238c6226">keypop::card::ParseException::ParseException</a></div><div class="ttdeci">ParseException(const std::string &amp;message, const std::shared_ptr&lt; std::exception &gt; cause)</div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00043">ParseException.hpp:43</a></div></div>
-<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html_ab0190a0e94ed97dfa70e69a7cdd6a92a"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html#ab0190a0e94ed97dfa70e69a7cdd6a92a">keypop::card::ParseException::ParseException</a></div><div class="ttdeci">ParseException(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00033">ParseException.hpp:33</a></div></div>
-<div class="ttc" id="anamespacekeypop_html"><div class="ttname"><a href="namespacekeypop.html">keypop</a></div><div class="ttdef"><b>Definition:</b> <a href="_abstract_apdu_exception_8hpp_source.html#l00018">AbstractApduException.hpp:18</a></div></div>
+<a href="_parse_exception_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/******************************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (c) 2025 Calypso Networks Association https://calypsonet.org/    *</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                                                                            *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * This program and the accompanying materials are made available under the   *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * terms of the MIT License which is available at                             *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * https://opensource.org/licenses/MIT.                                       *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                            *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * SPDX-License-Identifier: MIT                                               *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> ******************************************************************************/</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacekeypop.html">keypop</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span>card {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="classkeypop_1_1card_1_1_parse_exception.html">ParseException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html#ab0190a0e94ed97dfa70e69a7cdd6a92a">   34</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classkeypop_1_1card_1_1_parse_exception.html#ab0190a0e94ed97dfa70e69a7cdd6a92a">ParseException</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    : std::exception()</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    , mMessage(message) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html#a0ac0c0e29e964a51938d98db238c6226">   44</a></span>    <a class="code hl_function" href="classkeypop_1_1card_1_1_parse_exception.html#a0ac0c0e29e964a51938d98db238c6226">ParseException</a>(</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">const</span> std::string&amp; message, <span class="keyword">const</span> std::shared_ptr&lt;std::exception&gt; cause)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    : std::exception(*cause)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    , mMessage(message) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">const</span> std::string&amp;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classkeypop_1_1card_1_1_parse_exception.html#a963659bdba16000faa4394c56619efe5">   54</a></span>    <a class="code hl_function" href="classkeypop_1_1card_1_1_parse_exception.html#a963659bdba16000faa4394c56619efe5">getMessage</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> mMessage;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">const</span> std::string mMessage;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>} <span class="comment">/* namespace card */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">/* namespace keypop */</span></div>
+<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html">keypop::card::ParseException</a></div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00028">ParseException.hpp:28</a></div></div>
+<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html_a0ac0c0e29e964a51938d98db238c6226"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html#a0ac0c0e29e964a51938d98db238c6226">keypop::card::ParseException::ParseException</a></div><div class="ttdeci">ParseException(const std::string &amp;message, const std::shared_ptr&lt; std::exception &gt; cause)</div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00044">ParseException.hpp:44</a></div></div>
+<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html_a963659bdba16000faa4394c56619efe5"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html#a963659bdba16000faa4394c56619efe5">keypop::card::ParseException::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00054">ParseException.hpp:54</a></div></div>
+<div class="ttc" id="aclasskeypop_1_1card_1_1_parse_exception_html_ab0190a0e94ed97dfa70e69a7cdd6a92a"><div class="ttname"><a href="classkeypop_1_1card_1_1_parse_exception.html#ab0190a0e94ed97dfa70e69a7cdd6a92a">keypop::card::ParseException::ParseException</a></div><div class="ttdeci">ParseException(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> <a href="_parse_exception_8hpp_source.html#l00034">ParseException.hpp:34</a></div></div>
+<div class="ttc" id="anamespacekeypop_html"><div class="ttname"><a href="namespacekeypop.html">keypop</a></div><div class="ttdef"><b>Definition:</b> <a href="_abstract_apdu_exception_8hpp_source.html#l00019">AbstractApduException.hpp:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

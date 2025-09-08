@@ -81,10 +81,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afe3d8a3eaaf7d54630feb7909844bd78"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_extension_spi.html#afe3d8a3eaaf7d54630feb7909844bd78">~CardSelectionExtensionSpi</a> ()=default</td></tr>
 <tr class="separator:afe3d8a3eaaf7d54630feb7909844bd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa74d42916f45536f451c846980013c35"><td class="memItemLeft" align="right" valign="top">virtual const std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_request_spi.html">CardSelectionRequestSpi</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_extension_spi.html#aa74d42916f45536f451c846980013c35">getCardSelectionRequest</a> () const =0</td></tr>
-<tr class="separator:aa74d42916f45536f451c846980013c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15731b7f9fd7789efad38472ca5fe4bb"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_smart_card_spi.html">SmartCardSpi</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_extension_spi.html#a15731b7f9fd7789efad38472ca5fe4bb">parse</a> (const std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_request_spi.html">CardSelectionRequestSpi</a> &gt; cardSelectionResponseApi) const =0</td></tr>
-<tr class="separator:a15731b7f9fd7789efad38472ca5fe4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada28a09b18be39f0416d9b041cfae51f"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_request_spi.html">CardSelectionRequestSpi</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_extension_spi.html#ada28a09b18be39f0416d9b041cfae51f">getCardSelectionRequest</a> () const =0</td></tr>
+<tr class="separator:ada28a09b18be39f0416d9b041cfae51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c9a1de5c62d866581d0e14009837cba"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_smart_card_spi.html">SmartCardSpi</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_extension_spi.html#a7c9a1de5c62d866581d0e14009837cba">parse</a> (const std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1_card_selection_response_api.html">CardSelectionResponseApi</a> &gt; cardSelectionResponseApi) const =0</td></tr>
+<tr class="separator:a7c9a1de5c62d866581d0e14009837cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Extension of the card selection for a specific card extension.</p>
@@ -93,7 +93,7 @@ Public Member Functions</h2></td></tr>
 <p >An adapter of this interface must also implement <b>CardSelectionExtension</b>.</p>
 <dl class="section since"><dt>Since</dt><dd>2.0.0 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_card_selection_extension_spi_8hpp_source.html#l00032">32</a> of file <a class="el" href="_card_selection_extension_spi_8hpp_source.html">CardSelectionExtensionSpi.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_card_selection_extension_spi_8hpp_source.html#l00036">36</a> of file <a class="el" href="_card_selection_extension_spi_8hpp_source.html">CardSelectionExtensionSpi.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afe3d8a3eaaf7d54630feb7909844bd78" name="afe3d8a3eaaf7d54630feb7909844bd78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe3d8a3eaaf7d54630feb7909844bd78">&#9670;&nbsp;</a></span>~CardSelectionExtensionSpi()</h2>
@@ -122,8 +122,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa74d42916f45536f451c846980013c35" name="aa74d42916f45536f451c846980013c35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa74d42916f45536f451c846980013c35">&#9670;&nbsp;</a></span>getCardSelectionRequest()</h2>
+<a id="ada28a09b18be39f0416d9b041cfae51f" name="ada28a09b18be39f0416d9b041cfae51f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada28a09b18be39f0416d9b041cfae51f">&#9670;&nbsp;</a></span>getCardSelectionRequest()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +132,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_request_spi.html">CardSelectionRequestSpi</a> &gt; keypop::card::spi::CardSelectionExtensionSpi::getCardSelectionRequest </td>
+          <td class="memname">virtual std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_request_spi.html">CardSelectionRequestSpi</a> &gt; keypop::card::spi::CardSelectionExtensionSpi::getCardSelectionRequest </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -150,8 +150,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a15731b7f9fd7789efad38472ca5fe4bb" name="a15731b7f9fd7789efad38472ca5fe4bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15731b7f9fd7789efad38472ca5fe4bb">&#9670;&nbsp;</a></span>parse()</h2>
+<a id="a7c9a1de5c62d866581d0e14009837cba" name="a7c9a1de5c62d866581d0e14009837cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c9a1de5c62d866581d0e14009837cba">&#9670;&nbsp;</a></span>parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,7 +162,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_smart_card_spi.html">SmartCardSpi</a> &gt; keypop::card::spi::CardSelectionExtensionSpi::parse </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1spi_1_1_card_selection_request_spi.html">CardSelectionRequestSpi</a> &gt;&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classkeypop_1_1card_1_1_card_selection_response_api.html">CardSelectionResponseApi</a> &gt;&#160;</td>
           <td class="paramname"><em>cardSelectionResponseApi</em></td><td>)</td>
           <td> const</td>
         </tr>
