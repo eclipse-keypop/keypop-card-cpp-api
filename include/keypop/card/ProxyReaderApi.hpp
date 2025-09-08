@@ -51,8 +51,9 @@ public:
      * (keypop::card::ApduResponseApi) are added to a new list
      * (keypop::card::CardResponseApi).
      *
-     * <p><b>Note:</b> in case of an error when sending an APDU (communication error, unexpected
-     * status word), an keypop::card::AbstractApduException exception is thrown.
+     * <p><b>Note:</b> in case of an error when sending an APDU (communication
+     * error, unexpected status word), an keypop::card::AbstractApduException
+     * exception is thrown.
      * Any responses from previously transmitted APDU commands are attached to
      * this exception.<br> This allows the calling application to be tolerant to
      * card tearing and to retrieve the partial response to the

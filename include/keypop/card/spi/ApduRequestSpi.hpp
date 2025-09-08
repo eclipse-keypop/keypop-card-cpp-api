@@ -41,7 +41,12 @@ public:
      * @return A array of at least 4 bytes.
      * @since 1.0.0
      */
-    virtual std::vector<uint8_t> getApdu() const = 0;
+    virtual const std::vector<std::uint8_t>& getApdu() const = 0;
+
+    /**
+     * C++
+     */
+    virtual void setApdu(const std::vector<std::uint8_t>& apdu) = 0;
 
     /**
      * Gets the list of status words that must be considered successful for the
@@ -67,7 +72,7 @@ public:
      */
     friend std::ostream&
     operator<<(std::ostream& os, const ApduRequestSpi& ars) {
-        const std::vector<uint8_t> apdu = ars.getApdu();
+        const std::vector<uint8_t>& apdu = ars.getApdu();
         const std::vector<int> sw = ars.getSuccessfulStatusWords();
 
         std::stringstream ssApdu;

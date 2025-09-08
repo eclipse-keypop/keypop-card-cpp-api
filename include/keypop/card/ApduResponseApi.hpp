@@ -40,13 +40,18 @@ public:
     virtual const std::vector<uint8_t>& getApdu() const = 0;
 
     /**
+     * C++
+     */
+    virtual void setApdu(const std::vector<std::uint8_t>& apdu) = 0;
+
+    /**
      * Gets the data part of the response received from the card (excluding the
      * status word).
      *
      * @return A not null byte array.
      * @since 1.0.0
      */
-    virtual const std::vector<uint8_t> getDataOut() const = 0;
+    virtual std::vector<uint8_t> getDataOut() const = 0;
 
     /**
      * Gets the status word of the APDU as an int.
@@ -61,7 +66,7 @@ public:
      */
     friend std::ostream&
     operator<<(std::ostream& os, const ApduResponseApi& ara) {
-        const std::vector<uint8_t> apdu = ara.getApdu();
+        const std::vector<uint8_t>& apdu = ara.getApdu();
         const std::vector<uint8_t> dataOut = ara.getDataOut();
 
         std::stringstream ssApdu;
