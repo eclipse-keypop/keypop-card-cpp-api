@@ -26,10 +26,12 @@ namespace spi {
  * <p>Provides the CardSelectionRequestSpi and interprets the result to provide
  * a SmartCardSpi.
  *
- * <p>Backside of the <b>org.eclipse.keypop.reader.selection.spi.CardSelectionExtension</b>
- * interface present in the <b>Keypop Reader API</b>.
+ * <p>Backside of the
+ * <b>keypop::reader::selection::spi::CardSelectionExtension</b> interface
+ * present in the <b>Keypop Reader API</b>.
  *
- * <p>An adapter of this interface must also implement <b>CardSelectionExtension</b>.
+ * <p>An adapter of this interface must also implement
+ * <b>CardSelectionExtension</b>.
  *
  * @since 2.0.0
  */
@@ -47,8 +49,8 @@ public:
      * @return A non-null reference.
      * @since 1.0.0
      */
-    virtual std::shared_ptr<CardSelectionRequestSpi>
-    getCardSelectionRequest() const = 0;
+    virtual std::unique_ptr<CardSelectionRequestSpi> getCardSelectionRequest()
+        = 0;
 
     /**
      * Analyzes the response received from the card during the selection process
@@ -59,9 +61,10 @@ public:
      * @throw ParseException If the card selection response parsing failed.
      * @since 1.0.0
      */
-    virtual std::shared_ptr<SmartCardSpi>
-    parse(const std::shared_ptr<CardSelectionResponseApi>
-              cardSelectionResponseApi) const = 0;
+    virtual std::shared_ptr<SmartCardSpi> parse(
+        const std::shared_ptr<CardSelectionResponseApi>&
+            cardSelectionResponseApi)
+        = 0;
 };
 
 } /* namespace spi */

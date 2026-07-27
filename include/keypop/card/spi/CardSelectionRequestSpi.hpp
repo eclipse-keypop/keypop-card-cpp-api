@@ -14,7 +14,6 @@
 #include <ostream>
 #include <vector>
 
-#include "keyple/core/util/cpp/KeypleStd.hpp"
 #include "keypop/card/spi/CardRequestSpi.hpp"
 
 namespace keypop {
@@ -59,9 +58,19 @@ public:
      */
     friend std::ostream&
     operator<<(std::ostream& os, const CardSelectionRequestSpi& csr) {
+        const std::vector<int> sw = csr.getSuccessfulSelectionStatusWords();
+
+        std::stringstream ssSw;
+        for (auto it = std::begin(sw); it != std::end(sw); ++it) {
+            ssSw << std::uppercase << std::hex << std::setfill('0')
+                 << std::setw(4) << static_cast<int>(*it);
+            if (it != sw.end() - 1) {
+                ssSw << ", ";
+            }
+        }
+
         os << "CARD_SELECTION_REQUEST_SPI: {"
-           << "SUCCESSFUL_SELECTON_STATUS_WORDS: "
-           << csr.getSuccessfulSelectionStatusWords() << ", "
+           << "SUCCESSFUL_SELECTON_STATUS_WORDS: " << ssSw.str() << ", "
            << "CARD_REQUEST: " << csr.getCardRequest() << "}";
 
         return os;
