@@ -81,10 +81,14 @@ public:
                       << std::setw(2) << static_cast<int>(val);
         }
 
+        std::stringstream ssSw;
+        ssSw << std::uppercase << std::hex << std::setfill('0') << std::setw(4)
+             << ara.getStatusWord();
+
         os << "APDU_RESPONSE_API: {"
            << "APDU: " << ssApdu.str() << ", "
            << "DATA_OUT: " << ssDataOut.str() << ", "
-           << "STATUS_WORD: " << ara.getStatusWord() << "}";
+           << "STATUS_WORD: " << ssSw.str() << "}";
 
         return os;
     }
