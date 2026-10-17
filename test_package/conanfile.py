@@ -8,34 +8,29 @@
 # SPDX-License-Identifier: MIT                                                *
 # *****************************************************************************/
 
-# FetchContent added in CMake 3.11, downloads during the configure step
-# FetchContent_MakeAvailable was added in CMake 3.14; simpler usage
-INCLUDE(FetchContent)
+import os
 
-IF(NOT EXISTS "${CMAKE_BINARY_DIR}/_deps/googletest-src")
+from conan import ConanFile
+from conan.tools.build import can_run
+from conan.tools.cmake import CMake, cmake_layout
 
-    MESSAGE("-- > Fetching GTest from keypop card")
 
-    FetchContent_Declare(
+class KeypopCardCppApiTestConan(ConanFile):
+    settings = "os", "arch", "compiler", "build_type"
+    generators = "CMakeToolchain", "CMakeDeps"
 
-        googletest
+    def requirements(self):
+        self.requires(self.tested_reference_str)
 
-        GIT_REPOSITORY    https://github.com/google/googletest.git
-        GIT_TAG           v1.14.0
-    )
+    def layout(self):
+        cmake_layout(self)
 
-ELSE()
+    def build(self):
+        cmake = CMake(self)
+        cmake.configure()
+        cmake.build()
 
-    FetchContent_Declare(
-
-        googletest
-
-        SOURCE_DIR ${CMAKE_BINARY_DIR}/_deps/googletest-src
-    )
-
-ENDIF()
-
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-FetchContent_MakeAvailable(googletest)
+    def test(self):
+        if can_run(self):
+            bin_path = os.path.join(self.cpp.build.bindir, "test_package")
+            self.run(bin_path, env="conanrun")
