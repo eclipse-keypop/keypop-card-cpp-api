@@ -10,5 +10,3 @@ on:
 jobs:
   call-reusable-workflow:
     uses: eclipse-keypop/keypop-actions/.github/workflows/reusable-conan-build-and-test.yml@chore/conan # NOSONAR - Same organization, trusted source
-    with:
-      test_executable_name: './build/bin/keypopcard_ut'
