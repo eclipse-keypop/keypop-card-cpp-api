@@ -69,7 +69,11 @@ class KeypopCardCppApiConan(ConanFile):
             cmake.configure()
             cmake.build()
             if can_run(self):
-                self.run(os.path.join(self.build_folder, "bin", "keypopcard_ut"))
+                bin_dir = os.path.join(self.build_folder, "bin")
+                if self.settings.os == "Windows":
+                    bin_dir = os.path.join(bin_dir, str(self.settings.build_type))
+                bin_name = "keypopcard_ut.exe" if self.settings.os == "Windows" else "keypopcard_ut"
+                self.run(os.path.join(bin_dir, bin_name))
 
     def package(self):
         copy(self, "LICENSE", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
