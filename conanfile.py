@@ -9,16 +9,16 @@
 # *****************************************************************************/
 
 import os
+import re
 
 from conan import ConanFile
 from conan.tools.build import can_run
 from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
-from conan.tools.files import copy
+from conan.tools.files import copy, load
 
 
 class KeypopCardCppApiConan(ConanFile):
     name = "keypop-card-cpp-api"
-    version = "2.0.1"
     license = "MIT"
     author = "Calypso Networks Association <https://calypsonet.org/>"
     url = "https://github.com/eclipse-keypop/keypop-card-cpp-api"
@@ -46,6 +46,11 @@ class KeypopCardCppApiConan(ConanFile):
     default_options = {
         "with_tests": False
     }
+
+    def set_version(self):
+        cmake_lists = load(self, os.path.join(self.recipe_folder, "CMakeLists.txt"))
+        match = re.search(r"VERSION\s+(\d+\.\d+\.\d+)", cmake_lists)
+        self.version = match.group(1)
 
     def layout(self):
         cmake_layout(self)

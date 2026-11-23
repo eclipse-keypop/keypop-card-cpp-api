@@ -9,4 +9,4 @@ on:
 
 jobs:
   call-reusable-workflow:
-    uses: eclipse-keypop/keypop-actions/.github/workflows/reusable-conan-build-and-test.yml@chore/conan # NOSONAR - Same organization, trusted source
+    uses: eclipse-keypop/keypop-actions/.github/workflows/reusable-conan-build-and-test.yml@main # NOSONAR - Same organization, trusted source
